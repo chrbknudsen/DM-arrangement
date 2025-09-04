@@ -1,30 +1,23 @@
 [
   {
-    "objectID": "index.html#quarto-drop-plugin-for-reveal.js",
-    "href": "index.html#quarto-drop-plugin-for-reveal.js",
+    "objectID": "index.html#housekeeping",
+    "href": "index.html#housekeeping",
     "title": "Quarto Drop plugin for Reveal.js",
-    "section": "Quarto Drop plugin for Reveal.js",
-    "text": "Quarto Drop plugin for Reveal.js\nThroughout this presentation, an interactive R console and editor can be invoked by pressing the drop shortcut\nBy default, the drop shortcut is the backtick key: `\n\n\nAlternatively, click the console button in the bottom left of the slide"
+    "section": "Housekeeping",
+    "text": "Housekeeping\nGå til denne side i din browser . . . Følg med ved at bruge piletasterne. . . . Stil endelig spørgsmål!"
   },
   {
-    "objectID": "index.html#configuration",
-    "href": "index.html#configuration",
+    "objectID": "index.html#kub-datalab",
+    "href": "index.html#kub-datalab",
     "title": "Quarto Drop plugin for Reveal.js",
-    "section": "Configuration",
-    "text": "Configuration\nSet the drop shortcut and button visibility in the yaml header.\n---\nformat:\n  revealjs:\n    drop:\n      button: false\n      shortcut: \"]\"\n---"
+    "section": "KUB Datalab",
+    "text": "KUB Datalab\nHvem er vi?"
   },
   {
-    "objectID": "index.html#execution-engine",
-    "href": "index.html#execution-engine",
+    "objectID": "index.html#hvad-vil-vi-vise",
+    "href": "index.html#hvad-vil-vi-vise",
     "title": "Quarto Drop plugin for Reveal.js",
-    "section": "Execution Engine",
-    "text": "Execution Engine\nFor a Python console, set the pyodide engine in the yaml header.\n---\nformat:\n  revealjs:\n    drop:\n      engine: pyodide\n---"
-  },
-  {
-    "objectID": "index.html#default-packages",
-    "href": "index.html#default-packages",
-    "title": "Quarto Drop plugin for Reveal.js",
-    "section": "Default packages",
-    "text": "Default packages\nAutomatically download packages when the presentation starts\n---\nformat:\n  revealjs:\n    drop:\n      engine: webr\n      webr:\n        packages:\n          - ggplot2\n          - dplyr\n---"
+    "section": "Hvad vil vi vise?",
+    "text": "Hvad vil vi vise?\nVi vil hente noget data fra Danmarks Statistik.\nog så vil vi gøre ting med det\nVi bruger denne tabel fra DS\nHFUDD11"
   }
 ]
