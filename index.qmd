@@ -1,63 +1,39 @@
 ---
 title: "Quarto Drop plugin for Reveal.js"
 subtitle: "A dropdown R or Python console"
-format: revealjs
+format: 
+  revealjs:
+    drop:
+      button: true
+      shortcut: "å"
+    webr:
+      packages:
+        - ggplot2
+        - dplyr
 revealjs-plugins:
   - drop
 ---
 
-## Quarto Drop plugin for Reveal.js
 
-Throughout this presentation, an interactive R console and editor can be invoked by pressing the drop shortcut
+## Housekeeping
 
-By default, the drop shortcut is the backtick key: [&#96;]{style="background-color: #EEE; border: 1px solid #333; border-radius: 5px; padding: 0px 8px"}
-
+Gå til denne side i din browser
 . . . 
+Følg med ved at bruge piletasterne.
+. . . 
+Stil endelig spørgsmål!
 
-</br>
 
-Alternatively, click the console button in the bottom left of the slide
+## KUB Datalab
 
-## Configuration
+Hvem er vi?
 
-Set the drop shortcut and button visibility in the `yaml` header.
+## Hvad vil vi vise?
 
-```yaml
----
-format:
-  revealjs:
-    drop:
-      button: false
-      shortcut: "]"
----
-```
+Vi vil hente noget data fra Danmarks Statistik.
 
-## Execution Engine
+og så vil vi gøre ting med det
 
-For a Python console, set the `pyodide` engine in the `yaml` header.
+Vi bruger denne tabel fra DS
 
-```yaml
----
-format:
-  revealjs:
-    drop:
-      engine: pyodide
----
-```
-
-## Default packages
-
-Automatically download packages when the presentation starts
-
-```yaml
----
-format:
-  revealjs:
-    drop:
-      engine: webr
-      webr:
-        packages:
-          - ggplot2
-          - dplyr
----
-```
+HFUDD11
