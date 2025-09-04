@@ -1,0 +1,39 @@
+---
+title: "Quarto Drop plugin for Reveal.js"
+subtitle: "A dropdown R or Python console"
+format: 
+  revealjs:
+    drop:
+      button: true
+      shortcut: "å"
+    webr:
+      packages:
+        - ggplot2
+        - dplyr
+revealjs-plugins:
+  - drop
+---
+
+
+## Housekeeping
+
+Gå til denne side i din browser
+. . . 
+Følg med ved at bruge piletasterne.
+. . . 
+Stil endelig spørgsmål!
+
+
+## KUB Datalab
+
+Hvem er vi?
+
+## Hvad vil vi vise?
+
+Vi vil hente noget data fra Danmarks Statistik.
+
+og så vil vi gøre ting med det
+
+Vi bruger denne tabel fra DS
+
+HFUDD11
