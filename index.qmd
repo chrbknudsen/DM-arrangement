@@ -3,7 +3,7 @@ title: "find guldet"
 subtitle: "Hvis du kan få adgang..."
 format: 
   revealjs:
-      logo: "kubdatalab.png"
+    logo: "kubdatalab.png"
     drop:
       button: true
       shortcut: "å"
@@ -11,8 +11,8 @@ format:
       packages:
         - ggplot2
         - dplyr
-revealjs-plugins:
-  - drop
+    revealjs-plugins:
+      - drop
 ---
 
 
