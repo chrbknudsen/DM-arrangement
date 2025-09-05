@@ -55,7 +55,7 @@ df <- df |>mutate(BOPOMR = tolower(BOPOMR))
 library(plotDK)
 library(dplyr)
 library(ggplot2)
-library(plotly)
+
 df |> 
   group_by(BOPOMR) |> 
   mutate(totbefolk = sum(INDHOLD)) |> 
