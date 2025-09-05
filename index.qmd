@@ -1,6 +1,6 @@
 ---
-title: "Quarto Drop plugin for Reveal.js"
-subtitle: "A dropdown R or Python console"
+title: "find guldet"
+subtitle: "Hvis du kan få adgang..."
 format: 
   revealjs:
     drop:
