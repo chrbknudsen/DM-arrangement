@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html#udfordring",
+    "href": "index.html#udfordring",
+    "title": "find guldet",
+    "section": "Udfordring!",
+    "text": "Udfordring!\ncurl virker ikke nativt i webassembler. Men der skulle eksistere en workaround beskrevet her:\nhttps://jeroen.github.io/notes/webassembly-curl/"
+  },
+  {
     "objectID": "index.html#housekeeping",
     "href": "index.html#housekeeping",
     "title": "find guldet",
