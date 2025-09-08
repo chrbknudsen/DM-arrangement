@@ -17,6 +17,12 @@ format:
       - drop
 ---
 
+## Udfordring!
+
+curl virker ikke nativt i webassembler.
+Men der skulle eksistere en workaround beskrevet her:
+
+https://jeroen.github.io/notes/webassembly-curl/
 
 ## Housekeeping
 
