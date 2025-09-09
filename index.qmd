@@ -12,7 +12,6 @@ format:
         - ggplot2
         - dplyr
         - plotDK
-        - httr2
     revealjs-plugins:
       - drop
 ---
@@ -24,6 +23,18 @@ Men der skulle eksistere en workaround beskrevet her:
 
 https://jeroen.github.io/notes/webassembly-curl/
 
+Men det hjælper os ikke... Så i stedet må vi kigge på en GET løsning - gennem - url 
+https://api.statbank.dk/console#data
+
+Hvilket  - med det parametre der angives senere, giver:
+https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2C%20H20%2C%20H30%2C%20H40%2C%20H50%2C%20H60%2C%20H70%2C%20H80%2C%20H90&Tid=2024
+
+
+Men det fejler. Chatty hjælper til:
+https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10,H20&Tid=2024
+så skal vi "bare" have tilføjet resten af H'erne.
+
+Og det virker!
 ## Housekeeping
 
 Gå til denne side i din browser
