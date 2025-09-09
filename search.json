@@ -4,14 +4,7 @@
     "href": "index.html#udfordring",
     "title": "find guldet",
     "section": "Udfordring!",
-    "text": "Udfordring!\ncurl virker ikke nativt i webassembler. Men der skulle eksistere en workaround beskrevet her:\nhttps://jeroen.github.io/notes/webassembly-curl/"
-  },
-  {
-    "objectID": "index.html#housekeeping",
-    "href": "index.html#housekeeping",
-    "title": "find guldet",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nGå til denne side i din browser . . . Følg med ved at bruge piletasterne. . . . Stil endelig spørgsmål!"
+    "text": "Udfordring!\ncurl virker ikke nativt i webassembler. Men der skulle eksistere en workaround beskrevet her:\nhttps://jeroen.github.io/notes/webassembly-curl/\nMen det hjælper os ikke… Så i stedet må vi kigge på en GET løsning - gennem - url https://api.statbank.dk/console#data\nHvilket - med det parametre der angives senere, giver: https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2C%20H20%2C%20H30%2C%20H40%2C%20H50%2C%20H60%2C%20H70%2C%20H80%2C%20H90&Tid=2024\nMen det fejler. Chatty hjælper til: https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10,H20&Tid=2024 så skal vi “bare” have tilføjet resten af H’erne.\nOg det virker! ## Housekeeping\nGå til denne side i din browser . . . Følg med ved at bruge piletasterne. . . . Stil endelig spørgsmål!"
   },
   {
     "objectID": "index.html#målet",
