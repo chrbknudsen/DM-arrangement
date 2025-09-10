@@ -9,41 +9,34 @@ format:
       shortcut: "å"
     webr:
       packages:
-        - ggplot2
-        - dplyr
+        - tidyverse
         - plotDK
     revealjs-plugins:
       - drop
 ---
 
+#
+![](figs/trompetpiger_top.jpg) 
+
 ## Udfordring!
 
 curl virker ikke nativt i webassembler.
-Men der skulle eksistere en workaround beskrevet her:
-
-https://jeroen.github.io/notes/webassembly-curl/
-
-Men det hjælper os ikke... Så i stedet må vi kigge på en GET løsning - gennem - url 
+Så i stedet må vi kigge på en GET løsning - gennem - url 
 https://api.statbank.dk/console#data
 
-Hvilket  - med det parametre der angives senere, giver:
-https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2C%20H20%2C%20H30%2C%20H40%2C%20H50%2C%20H60%2C%20H70%2C%20H80%2C%20H90&Tid=2024
-
-
-Men det fejler. Chatty hjælper til:
-https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10,H20&Tid=2024
-så skal vi "bare" have tilføjet resten af H'erne.
+https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10,H20,H30,H40,H50,H60,H70,H80,H90&Tid=2024
 
 Og det virker!
+
 ## Housekeeping
 
 Gå til denne side i din browser
-. . . 
+
 Følg med ved at bruge piletasterne.
-. . . 
+
 Stil endelig spørgsmål!
 
-## målet
+## Målet
 Sådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne.
 ```{r echo = FALSE} 
 library(httr2)
@@ -88,21 +81,37 @@ plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
 
 Hvem er vi?
 
+## Hvad er R?
+
+Det er et bogstav, der ligger mellem q og s.
+
 ## Hvad vil vi vise?
 
 Vi vil hente noget data fra Danmarks Statistik.
 
 og så vil vi gøre ting med det
 
-Vi bruger denne tabel fra DS
+[Datavejviser](https://www.datavejviser.dk/){target="_blank"}
 
-HFUDD11
 
 
 ## Hvordan gør jeg det derhjemme?
 
-Hvis du vil lave noget der er mere avanceret end det her - så download og installer R og Positron fra
-disse adresser
+Gør dig selv en tjeneste - download og installer [R](https://cran.r-project.org/){target="_blank"} (først) og (dernæst) [Positron](https://positron.posit.co/download.html){target="_blank"}
+
+Der er begrænsninger i denne side som bliver trælse på sigt.
+
+## Trin for trin
+
+Definer hvilke data vi skal have. 
+
+Hent data
+
+Manipuler data
+
+Lidt om plotDK - choropleth
+
+kortet!
 
 
 ## Det samlede script
@@ -110,6 +119,7 @@ disse adresser
 Her sætter vi det samlede færdige script ind, lige til at kopiere.
 plotDK er pakken!
 
+Det er så ikke det vi kommer til at gøre.
 
 ```
 library(httr2)
