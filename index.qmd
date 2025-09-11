@@ -1,6 +1,6 @@
 ---
-title: "find guldet"
-subtitle: "Hvis du kan få adgang..."
+title: "Find guldet"
+subtitle: "Eller pyrit"
 format: 
   revealjs:
     logo: "kubdatalab.png"
@@ -9,28 +9,77 @@ format:
       shortcut: "å"
     webr:
       packages:
+        - readr
         - ggplot2
         - dplyr
         - plotDK
-        - httr2
     revealjs-plugins:
       - drop
 ---
 
+#
+![](figs/trompetpiger_top.jpg) 
+
 
 ## Housekeeping
 
-Gå til denne side i din browser
-. . . 
+Gå til denne side i din browser: https://kubdatalab.github.io/DM-arrangemen
+
 Følg med ved at bruge piletasterne.
-. . . 
+
 Stil endelig spørgsmål!
 
-## målet
+## KUB Datalab
+
+Hvem er vi?
+
+Service på Københavns Universitetsbibliotek (som er en del af Det Kgl. Bibliotek).
+
+Vi hjælper studerende - og deres undervisere og undertiden forskere - med at arbejde med data.
+
+Kurser, åbne konsultationer, "indlejrede" kurser.
+
+Bred portefølje: R, Python, Excel, Voyant, NVivo, SQL, OpenRefine, Orange, VOSViewer
+
+Os tre, og en god håndfuld hangarounds blandt kollegerne
+
+Find os på [vores hjemmeside](https://kub.kb.dk/datalab){target="_blank"}
+
+
+## Hvad er R?
+
+R er et generelt, scriptet, programmeringssprog der er særligt udviklet til 
+statistisk dataanalyse. 
+
+Det er _relativt_ let at gå fra nybegynder til at få lavet en visualisering.
+
+Let som i: En kategori 2 stigning i Tour de France er let sammenlignet med en
+kategori 1 stigning...
+
+## Jamen jeg har ikke R installeret på min computer!
+
+No worries. De her slides kommer med R indbygget.
+
+Klik på det lille ">_" ikon i nederste venstre hjørne.
+
+Det er en ret primitiv udgave af R - så der er ting vi gerne ville gøre, som vi ikke
+kan gøre. Men vi kan lave fine ting alligevel.
+
+## Hvad vil vi vise?
+
+Vi vil hente noget data fra Danmarks Statistik.
+
+Og så vil vi gøre ting med det
+
+
+## Målet
 Sådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne.
 ```{r echo = FALSE} 
-library(httr2)
+library(plotDK)
 library(dplyr)
+library(ggplot2)
+library(readr)
+library(httr2)
 endpoint <- "http://api.statbank.dk/v1/data"
 
 variables <- list(list(code = "BOPOMR", values = I("*")),
@@ -52,9 +101,7 @@ csv_text <- resp_body_string(resp)
 df <- read.csv2(text = csv_text)
 df <- df |>mutate(BOPOMR = tolower(BOPOMR))
 
-library(plotDK)
-library(dplyr)
-library(ggplot2)
+
 
 df |> 
   group_by(BOPOMR) |> 
@@ -66,33 +113,70 @@ plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
 
 
 
+## Trin for trin
 
-## KUB Datalab
+Definer hvilke data vi skal have. 
 
-Hvem er vi?
+Vi har snydt lidt og forberedt os.
 
-## Hvad vil vi vise?
+Befolkningens højst fuldførte uddannelse (15-69 år) efter bopælsområde, herkomst, 
+højest fuldføte uddannelse, alder og køn.
 
-Vi vil hente noget data fra Danmarks Statistik.
+Blandt venner HFUDD11
 
-og så vil vi gøre ting med det
+[Datavejviser](https://www.datavejviser.dk/){target="_blank"}
 
-Vi bruger denne tabel fra DS
+Hov! Man skal logge på!
 
-HFUDD11
+Dann haben wir anderen Methoden...
+
+## En smutvej
+
+Egentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API,
+med komplekse datastrukturer og avancerede udvælgelseskriterier.
+
+Men det kan vores hjemmeside ikke. 
+
+Og det er måske også lidt avanceret for absolutte nybegyndere...
+
+De har en såkaldt "konsol", som man kan bruge til at konstruere og teste den slags.
+
+Den besøger vi!
+
+Det her kalder API'et og giver os vores ønskede data:
+
+https://api.statbank.dk/v1/data/HFIDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH88&Tid=2024
+
+## Hent data
+
+
+
+
+
+
+Manipuler data
+
+Lidt om plotDK - choropleth
+
+kortet!
+
+
 
 
 ## Hvordan gør jeg det derhjemme?
 
-Hvis du vil lave noget der er mere avanceret end det her - så download og installer R og Positron fra
-disse adresser
+Gør dig selv en tjeneste - download og installer [R](https://cran.r-project.org/){target="_blank"} (først) og (dernæst) [Positron](https://positron.posit.co/download.html){target="_blank"}
+
+Der er begrænsninger i denne side som bliver trælse på sigt.
 
 
-## Det samlede script
+
+## Det samlede script - det vi lavede
 
 Her sætter vi det samlede færdige script ind, lige til at kopiere.
 plotDK er pakken!
 
+Det er så ikke det vi kommer til at gøre.
 
 ```
 library(httr2)
@@ -132,3 +216,7 @@ plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
                       high = "red")
 
 ```
+
+
+## Det samlede script - det vi gerne ville have lavet
+
