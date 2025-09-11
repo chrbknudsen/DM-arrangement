@@ -1,65 +1,86 @@
 [
   {
-    "objectID": "index.html#udfordring",
-    "href": "index.html#udfordring",
-    "title": "find guldet",
-    "section": "Udfordring!",
-    "text": "Udfordring!\ncurl virker ikke nativt i webassembler. Så i stedet må vi kigge på en GET løsning - gennem - url https://api.statbank.dk/console#data\nhttps://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10,H20,H30,H40,H50,H60,H70,H80,H90&Tid=2024\nOg det virker!"
-  },
-  {
     "objectID": "index.html#housekeeping",
     "href": "index.html#housekeeping",
-    "title": "find guldet",
+    "title": "Find guldet",
     "section": "Housekeeping",
-    "text": "Housekeeping\nGå til denne side i din browser\nFølg med ved at bruge piletasterne.\nStil endelig spørgsmål!"
-  },
-  {
-    "objectID": "index.html#målet",
-    "href": "index.html#målet",
-    "title": "find guldet",
-    "section": "Målet",
-    "text": "Målet\nSådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne."
+    "text": "Housekeeping\nGå til denne side i din browser: https://kubdatalab.github.io/DM-arrangemen\nFølg med ved at bruge piletasterne.\nStil endelig spørgsmål!"
   },
   {
     "objectID": "index.html#kub-datalab",
     "href": "index.html#kub-datalab",
-    "title": "find guldet",
+    "title": "Find guldet",
     "section": "KUB Datalab",
-    "text": "KUB Datalab\nHvem er vi?"
+    "text": "KUB Datalab\nHvem er vi?\nService på Københavns Universitetsbibliotek (som er en del af Det Kgl. Bibliotek).\nVi hjælper studerende - og deres undervisere og undertiden forskere - med at arbejde med data.\nKurser, åbne konsultationer, “indlejrede” kurser.\nBred portefølje: R, Python, Excel, Voyant, NVivo, SQL, OpenRefine, Orange, VOSViewer\nOs tre, og en god håndfuld hangarounds blandt kollegerne\nFind os på vores hjemmeside"
   },
   {
     "objectID": "index.html#hvad-er-r",
     "href": "index.html#hvad-er-r",
-    "title": "find guldet",
+    "title": "Find guldet",
     "section": "Hvad er R?",
-    "text": "Hvad er R?\nDet er et bogstav, der ligger mellem q og s."
+    "text": "Hvad er R?\nR er et generelt, scriptet, programmeringssprog der er særligt udviklet til statistisk dataanalyse.\nDet er relativt let at gå fra nybegynder til at få lavet en visualisering.\nLet som i: En kategori 2 stigning i Tour de France er let sammenlignet med en kategori 1 stigning…"
+  },
+  {
+    "objectID": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
+    "href": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
+    "title": "Find guldet",
+    "section": "Jamen jeg har ikke R installeret på min computer!",
+    "text": "Jamen jeg har ikke R installeret på min computer!\nNo worries. De her slides kommer med R indbygget.\nKlik på det lille “&gt;_” ikon i nederste venstre hjørne.\nDet er en ret primitiv udgave af R - så der er ting vi gerne ville gøre, som vi ikke kan gøre. Men vi kan lave fine ting alligevel."
   },
   {
     "objectID": "index.html#hvad-vil-vi-vise",
     "href": "index.html#hvad-vil-vi-vise",
-    "title": "find guldet",
+    "title": "Find guldet",
     "section": "Hvad vil vi vise?",
-    "text": "Hvad vil vi vise?\nVi vil hente noget data fra Danmarks Statistik.\nog så vil vi gøre ting med det\nDatavejviser"
+    "text": "Hvad vil vi vise?\nVi vil hente noget data fra Danmarks Statistik.\nOg så vil vi gøre ting med det"
   },
   {
-    "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
-    "href": "index.html#hvordan-gør-jeg-det-derhjemme",
-    "title": "find guldet",
-    "section": "Hvordan gør jeg det derhjemme?",
-    "text": "Hvordan gør jeg det derhjemme?\nGør dig selv en tjeneste - download og installer R (først) og (dernæst) Positron\nDer er begrænsninger i denne side som bliver trælse på sigt."
+    "objectID": "index.html#målet",
+    "href": "index.html#målet",
+    "title": "Find guldet",
+    "section": "Målet",
+    "text": "Målet\nSådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne."
   },
   {
     "objectID": "index.html#trin-for-trin",
     "href": "index.html#trin-for-trin",
-    "title": "find guldet",
+    "title": "Find guldet",
     "section": "Trin for trin",
-    "text": "Trin for trin\nDefiner hvilke data vi skal have.\nHent data\nManipuler data\nLidt om plotDK - choropleth\nkortet!"
+    "text": "Trin for trin\nDefiner hvilke data vi skal have.\nVi har snydt lidt og forberedt os.\nBefolkningens højst fuldførte uddannelse (15-69 år) efter bopælsområde, herkomst, højest fuldføte uddannelse, alder og køn.\nBlandt venner HFUDD11\nDatavejviser\nHov! Man skal logge på!\nDann haben wir anderen Methoden…"
   },
   {
-    "objectID": "index.html#det-samlede-script",
-    "href": "index.html#det-samlede-script",
-    "title": "find guldet",
-    "section": "Det samlede script",
-    "text": "Det samlede script\nHer sætter vi det samlede færdige script ind, lige til at kopiere. plotDK er pakken!\nDet er så ikke det vi kommer til at gøre.\nlibrary(httr2)\nendpoint &lt;- \"http://api.statbank.dk/v1/data\"\n\nvariables &lt;- list(list(code = \"BOPOMR\", values = I(\"*\")),\n                  list(code = \"HFUDD\", values = c(\"H10\", \"H20\", \"H30\", \"H40\", \"H50\", \"H60\", \"H70\", \"H80\", \"H90\")),\n                  list(code = \"Tid\", values = I(2024))\n              )\n\nour_body &lt;- list(table = \"HFUDD11\", lang = \"da\", format = \"CSV\", variables = variables)\n\n\n\nresp &lt;- request(endpoint) |&gt;\n  req_body_json(our_body) |&gt;\n  req_perform()\n\ncsv_text &lt;- resp_body_string(resp)\n\n\ndf &lt;- read.csv2(text = csv_text)\ndf &lt;- df |&gt;mutate(BOPOMR = tolower(BOPOMR))\n\nplotDK::municipality |&gt; head()\n\nlibrary(plotDK)\nlibrary(dplyr)\nlibrary(ggplot2)\ndf |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  mutate(andel = INDHOLD/totbefolk) |&gt; \n  filter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\")"
+    "objectID": "index.html#en-smutvej",
+    "href": "index.html#en-smutvej",
+    "title": "Find guldet",
+    "section": "En smutvej",
+    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags.\nDen besøger vi!\nDet her kalder API’et og giver os vores ønskede data:\nhttps://api.statbank.dk/v1/data/HFIDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH88&Tid=2024"
+  },
+  {
+    "objectID": "index.html#hent-data",
+    "href": "index.html#hent-data",
+    "title": "Find guldet",
+    "section": "Hent data",
+    "text": "Hent data\nManipuler data\nLidt om plotDK - choropleth\nkortet!"
+  },
+  {
+    "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
+    "href": "index.html#hvordan-gør-jeg-det-derhjemme",
+    "title": "Find guldet",
+    "section": "Hvordan gør jeg det derhjemme?",
+    "text": "Hvordan gør jeg det derhjemme?\nGør dig selv en tjeneste - download og installer R (først) og (dernæst) Positron\nDer er begrænsninger i denne side som bliver trælse på sigt."
+  },
+  {
+    "objectID": "index.html#det-samlede-script---det-vi-lavede",
+    "href": "index.html#det-samlede-script---det-vi-lavede",
+    "title": "Find guldet",
+    "section": "Det samlede script - det vi lavede",
+    "text": "Det samlede script - det vi lavede\nHer sætter vi det samlede færdige script ind, lige til at kopiere. plotDK er pakken!\nDet er så ikke det vi kommer til at gøre.\nlibrary(httr2)\nendpoint &lt;- \"http://api.statbank.dk/v1/data\"\n\nvariables &lt;- list(list(code = \"BOPOMR\", values = I(\"*\")),\n                  list(code = \"HFUDD\", values = c(\"H10\", \"H20\", \"H30\", \"H40\", \"H50\", \"H60\", \"H70\", \"H80\", \"H90\")),\n                  list(code = \"Tid\", values = I(2024))\n              )\n\nour_body &lt;- list(table = \"HFUDD11\", lang = \"da\", format = \"CSV\", variables = variables)\n\n\n\nresp &lt;- request(endpoint) |&gt;\n  req_body_json(our_body) |&gt;\n  req_perform()\n\ncsv_text &lt;- resp_body_string(resp)\n\n\ndf &lt;- read.csv2(text = csv_text)\ndf &lt;- df |&gt;mutate(BOPOMR = tolower(BOPOMR))\n\nplotDK::municipality |&gt; head()\n\nlibrary(plotDK)\nlibrary(dplyr)\nlibrary(ggplot2)\ndf |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  mutate(andel = INDHOLD/totbefolk) |&gt; \n  filter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\")"
+  },
+  {
+    "objectID": "index.html#det-samlede-script---det-vi-gerne-ville-have-lavet",
+    "href": "index.html#det-samlede-script---det-vi-gerne-ville-have-lavet",
+    "title": "Find guldet",
+    "section": "Det samlede script - det vi gerne ville have lavet",
+    "text": "Det samlede script - det vi gerne ville have lavet"
   }
 ]
