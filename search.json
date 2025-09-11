@@ -53,14 +53,28 @@
     "href": "index.html#en-smutvej",
     "title": "Find guldet",
     "section": "En smutvej",
-    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags.\nDen besøger vi!\nDet her kalder API’et og giver os vores ønskede data:\nhttps://api.statbank.dk/v1/data/HFIDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH88&Tid=2024"
+    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags.\nDen besøger vi!\nDet her kalder API’et og giver os vores ønskede data:\nhttps://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\ndata_url &lt;- \"https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\""
   },
   {
     "objectID": "index.html#hent-data",
     "href": "index.html#hent-data",
     "title": "Find guldet",
     "section": "Hent data",
-    "text": "Hent data\nManipuler data\nLidt om plotDK - choropleth\nkortet!"
+    "text": "Hent data\nVi så hvordan vi kunne gemme oplysninger i “objekter” i R.\nVi kan også gemme mere komplekse data i R.\nlibrary(readr)\ndata &lt;- read_csv2(data_url)"
+  },
+  {
+    "objectID": "index.html#manipuler-data",
+    "href": "index.html#manipuler-data",
+    "title": "Find guldet",
+    "section": "Manipuler data",
+    "text": "Manipuler data\nOg så skal vi have taget stilling til hvad vi faktisk vil have på det kort!"
+  },
+  {
+    "objectID": "index.html#lidt-om-plotdk---choropleth",
+    "href": "index.html#lidt-om-plotdk---choropleth",
+    "title": "Find guldet",
+    "section": "Lidt om plotDK - choropleth",
+    "text": "Lidt om plotDK - choropleth\nkortet!"
   },
   {
     "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
