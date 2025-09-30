@@ -23,7 +23,10 @@ format:
 
 ## Housekeeping
 
-Gå til denne side i din browser: https://kubdatalab.github.io/DM-arrangemen
+
+
+
+Gå til denne side i din browser: https://kubdatalab.github.io/DM-arrangement
 
 Følg med ved at bruge piletasterne.
 
