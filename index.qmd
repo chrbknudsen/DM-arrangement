@@ -327,3 +327,12 @@ ggplotly(p, tooltip = c("fill"))
 
 ## Det samlede script - det vi gerne ville have lavet
 
+## lidt ekstra
+
+Søjlediagrammer
+```
+data |> 
+  filter(BOPOMR %in% c("københavn", "tårnby")) |> 
+  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +
+  geom_col(position = "dodge")
+```
