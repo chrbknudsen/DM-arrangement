@@ -1,0 +1,163 @@
+[
+  {
+    "objectID": "index.html#housekeeping",
+    "href": "index.html#housekeeping",
+    "title": "Find guldet",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nGå til denne side i din browser: https://kubdatalab.github.io/DM-arrangement\nFølg med ved at bruge piletasterne.\nStil endelig spørgsmål!"
+  },
+  {
+    "objectID": "index.html#kub-datalab",
+    "href": "index.html#kub-datalab",
+    "title": "Find guldet",
+    "section": "KUB Datalab",
+    "text": "KUB Datalab\nHvem er vi?\nService på Københavns Universitetsbibliotek (som er en del af Det Kgl. Bibliotek).\nVi hjælper studerende - og deres undervisere og undertiden forskere - med at arbejde med data.\nKurser, åbne konsultationer, “indlejrede” kurser.\nBred portefølje: R, Python, Excel, Voyant, NVivo, SQL, OpenRefine, Orange, VOSViewer\nOs tre, og en god håndfuld hangarounds blandt kollegerne\nFind os på vores hjemmeside"
+  },
+  {
+    "objectID": "index.html#hvad-er-r",
+    "href": "index.html#hvad-er-r",
+    "title": "Find guldet",
+    "section": "Hvad er R?",
+    "text": "Hvad er R?\nR er et generelt, scriptet, programmeringssprog der er særligt udviklet til statistisk dataanalyse.\nDet er relativt let at gå fra nybegynder til at få lavet en visualisering.\nLet som i: En kategori 2 stigning i Tour de France er let sammenlignet med en kategori 1 stigning…"
+  },
+  {
+    "objectID": "index.html#hvad-gør-det-let",
+    "href": "index.html#hvad-gør-det-let",
+    "title": "Find guldet",
+    "section": "Hvad gør det let?",
+    "text": "Hvad gør det let?\nDet er open-source.\nSå rare mennesker skriver funktioner der gør ting.\nOg deler dem i såkaldte “pakker”\nDet kommer vi til at bruge!"
+  },
+  {
+    "objectID": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
+    "href": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
+    "title": "Find guldet",
+    "section": "Jamen jeg har ikke R installeret på min computer!",
+    "text": "Jamen jeg har ikke R installeret på min computer!\nNo worries. De her slides kommer med R indbygget.\nKlik på det lille “&gt;_” ikon i nederste venstre hjørne.\nDet er en ret primitiv udgave af R - så der er ting vi gerne ville gøre, som vi ikke kan gøre. Men vi kan lave fine ting alligevel."
+  },
+  {
+    "objectID": "index.html#hvad-vil-vi-vise",
+    "href": "index.html#hvad-vil-vi-vise",
+    "title": "Find guldet",
+    "section": "Hvad vil vi vise?",
+    "text": "Hvad vil vi vise?\nVi vil hente noget data fra Danmarks Statistik.\nOg så vil vi gøre ting med det"
+  },
+  {
+    "objectID": "index.html#målet",
+    "href": "index.html#målet",
+    "title": "Find guldet",
+    "section": "Målet",
+    "text": "Målet"
+  },
+  {
+    "objectID": "index.html#trin-for-trin",
+    "href": "index.html#trin-for-trin",
+    "title": "Find guldet",
+    "section": "Trin for trin",
+    "text": "Trin for trin\nDefiner hvilke data vi skal have.\nVi har snydt lidt og forberedt os.\nBefolkningens højst fuldførte uddannelse (15-69 år) efter bopælsområde, herkomst, højest fuldføte uddannelse, alder og køn.\nBlandt venner HFUDD11\nDatavejviser\nHov! Man skal logge på!\nDann haben wir anderen Methoden…"
+  },
+  {
+    "objectID": "index.html#en-smutvej",
+    "href": "index.html#en-smutvej",
+    "title": "Find guldet",
+    "section": "En smutvej",
+    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags."
+  },
+  {
+    "objectID": "index.html#den-besøger-vi",
+    "href": "index.html#den-besøger-vi",
+    "title": "Find guldet",
+    "section": "Den besøger vi!",
+    "text": "Den besøger vi!\nKonsollen er her\nDet her kalder API’et og giver os vores ønskede data:\ndata_url &lt;- \"https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\""
+  },
+  {
+    "objectID": "index.html#hent-data",
+    "href": "index.html#hent-data",
+    "title": "Find guldet",
+    "section": "Hent data",
+    "text": "Hent data\nVi så hvordan vi kunne gemme oplysninger i “objekter” i R.\nVi kan også gemme mere komplekse data i R.\nlibrary(readr)\ndata &lt;- read_csv2(data_url)"
+  },
+  {
+    "objectID": "index.html#manipuler-data",
+    "href": "index.html#manipuler-data",
+    "title": "Find guldet",
+    "section": "Manipuler data",
+    "text": "Manipuler data\nOg så skal vi have taget stilling til hvad vi faktisk vil have på det kort!\nVi kunne godt tænke os at se hvor stor en andel af befolkningen i hver kommune, der har grundskolen som den højest gennemførte uddannelse.\nHusk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt uddannelsesniveau. Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveua, at en 15-årig ikke har en lang videregående uddannelse endnu."
+  },
+  {
+    "objectID": "index.html#inspicer-data",
+    "href": "index.html#inspicer-data",
+    "title": "Find guldet",
+    "section": "Inspicer data",
+    "text": "Inspicer data\nhead(data)\ndata |&gt; summary()\nSå vi har et antal borgere med forskelligt niveau af uddannelse. Men ikke en andel. Hvordan får vi det?"
+  },
+  {
+    "objectID": "index.html#grupper-og-opsummer-data",
+    "href": "index.html#grupper-og-opsummer-data",
+    "title": "Find guldet",
+    "section": "Grupper og opsummer data",
+    "text": "Grupper og opsummer data\nVi starter med at finde ud af hvor mange der bor i hvert bopælsområde:\nlibrary(tidyverse)\ndata &lt;- data |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  ungroup()"
+  },
+  {
+    "objectID": "index.html#beregn-andel",
+    "href": "index.html#beregn-andel",
+    "title": "Find guldet",
+    "section": "Beregn andel",
+    "text": "Beregn andel\ndata &lt;- data |&gt; \n  mutate(andel = INDHOLD/totbefolk)"
+  },
+  {
+    "objectID": "index.html#udvælg-det-vi-var-interesserede-i",
+    "href": "index.html#udvælg-det-vi-var-interesserede-i",
+    "title": "Find guldet",
+    "section": "Udvælg det vi var interesserede i",
+    "text": "Udvælg det vi var interesserede i\nVi var særligt interesserede i hvor stor en andel af befolkningen, der har grundskolen som højste uddannelse.\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\")"
+  },
+  {
+    "objectID": "index.html#lidt-om-plotdk---choropleth",
+    "href": "index.html#lidt-om-plotdk---choropleth",
+    "title": "Find guldet",
+    "section": "Lidt om plotDK - choropleth",
+    "text": "Lidt om plotDK - choropleth\nVi vil gerne have lavet et kort. Og vi vil gerne farvelægge kommunerne på kortet.\nRare mennesker har lavet en pakke der kan hjælpe med det. Den er ret hjælpsom\nplotDK"
+  },
+  {
+    "objectID": "index.html#andele-på-kort",
+    "href": "index.html#andele-på-kort",
+    "title": "Find guldet",
+    "section": "Andele på kort",
+    "text": "Andele på kort\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK(id = \"BOPOMR\", value = \"andel\")"
+  },
+  {
+    "objectID": "index.html#interaktivt",
+    "href": "index.html#interaktivt",
+    "title": "Find guldet",
+    "section": "Interaktivt!",
+    "text": "Interaktivt!\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = TRUE)"
+  },
+  {
+    "objectID": "index.html#trælse-farver",
+    "href": "index.html#trælse-farver",
+    "title": "Find guldet",
+    "section": "Trælse farver…",
+    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom.\n´´´ p &lt;- data |&gt; filter(HFUDD == “H10 Grundskole”) |&gt; plotDK::plotDK(id = “BOPOMR”, value = “andel”, interactive = FALSE) + scale_fill_gradient(low = “blue”, high = “red”) ggplotly(p, tooltip = c(“fill”)) ´´´"
+  },
+  {
+    "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
+    "href": "index.html#hvordan-gør-jeg-det-derhjemme",
+    "title": "Find guldet",
+    "section": "Hvordan gør jeg det derhjemme?",
+    "text": "Hvordan gør jeg det derhjemme?\nGør dig selv en tjeneste - download og installer R (først) og (dernæst) Positron\nDer er begrænsninger i denne side som bliver trælse på sigt."
+  },
+  {
+    "objectID": "index.html#det-samlede-script---det-vi-lavede",
+    "href": "index.html#det-samlede-script---det-vi-lavede",
+    "title": "Find guldet",
+    "section": "Det samlede script - det vi lavede",
+    "text": "Det samlede script - det vi lavede\nlibrary(httr2)\nendpoint &lt;- \"http://api.statbank.dk/v1/data\"\n\nvariables &lt;- list(list(code = \"BOPOMR\", values = I(\"*\")),\n                  list(code = \"HFUDD\", values = c(\"H10\", \"H20\", \"H30\", \"H40\", \"H50\", \"H60\", \"H70\", \"H80\", \"H90\")),\n                  list(code = \"Tid\", values = I(2024))\n              )\n\nour_body &lt;- list(table = \"HFUDD11\", lang = \"da\", format = \"CSV\", variables = variables)\n\nresp &lt;- request(endpoint) |&gt;\n  req_body_json(our_body) |&gt;\n  req_perform()\n\ncsv_text &lt;- resp_body_string(resp)\n\n\ndf &lt;- read.csv2(text = csv_text)\ndf &lt;- df |&gt;mutate(BOPOMR = tolower(BOPOMR))\n\nplotDK::municipality |&gt; head()\n\nlibrary(plotDK)\nlibrary(dplyr)\nlibrary(ggplot2)\np &lt;- df |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  mutate(andel = INDHOLD/totbefolk) |&gt; \n  filter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\") \nggplotly(p, tooltip = c(\"fill\"))"
+  },
+  {
+    "objectID": "index.html#det-samlede-script---det-vi-gerne-ville-have-lavet",
+    "href": "index.html#det-samlede-script---det-vi-gerne-ville-have-lavet",
+    "title": "Find guldet",
+    "section": "Det samlede script - det vi gerne ville have lavet",
+    "text": "Det samlede script - det vi gerne ville have lavet"
+  }
+]
