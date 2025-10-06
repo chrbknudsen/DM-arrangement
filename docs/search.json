@@ -159,5 +159,12 @@
     "title": "Find guldet",
     "section": "Det samlede script - det vi gerne ville have lavet",
     "text": "Det samlede script - det vi gerne ville have lavet"
+  },
+  {
+    "objectID": "index.html#lidt-ekstra",
+    "href": "index.html#lidt-ekstra",
+    "title": "Find guldet",
+    "section": "lidt ekstra",
+    "text": "lidt ekstra\nSøjlediagrammer\ndata |&gt; \n  filter(BOPOMR %in% c(\"københavn\", \"tårnby\")) |&gt; \n  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +\n  geom_col(position = \"dodge\")"
   }
 ]
