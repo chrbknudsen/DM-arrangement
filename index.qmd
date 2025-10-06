@@ -106,12 +106,15 @@ df <- df |>mutate(BOPOMR = tolower(BOPOMR))
 
 
 
-df |> 
+p <- df |> 
   group_by(BOPOMR) |> 
   mutate(totbefolk = sum(INDHOLD)) |> 
   mutate(andel = INDHOLD/totbefolk) |> 
   filter(HFUDD == "H10 Grundskole") |> 
-plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = TRUE) 
+plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
+  scale_fill_gradient(low = "blue",
+                      high = "red") 
+                      ggplotly(p, tooltip = c("andel"))
 ```
 
 
@@ -170,9 +173,46 @@ data <- read_csv2(data_url)
 
 Og så skal vi have taget stilling til hvad vi faktisk vil have på det kort!
 
+Vi kunne godt tænke os at se hvor stor en andel af befolkningen i hver kommune, der har 
+grundskolen som den højest gennemførte uddannelse.
+
+Husk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt uddannelsesniveau. 
+Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveua, at en
+15-årig ikke har en lang videregående uddannelse endnu.
+
+Hvordan gør vi dt?
+
+## Inspicer data
+
+```
+head(data)
+data |> summary()
+```
+
+Så vi har et antal borgere med forskelligt niveau af uddannelse. Men ikke en andel. Hvordan får vi det?
+
+## Grupper og opsummer data
+
+Vi starter med at finde ud af hvor mange der bor i hvert bopælsområde:
+```{r}
+library(tidyverse)
+data <- data |> group_by(BOPOMR) |> 
+  mutate(totbefolk = sum(INDHOLD)) |> 
+  ungroup()
+
+```
+
+## Beregn andel
+
+```{r}
+data <- data |> 
+  mutate(andel = INDHOLD/totbefolk)
+```
+
 ## Lidt om plotDK - choropleth
 
-
+Vi vil gerne have lavet et kort. Og vi vil gerne farvelægge 
+kommunerne på kortet efter hvor mange 
 
 kortet!
 
@@ -222,14 +262,28 @@ plotDK::municipality |> head()
 library(plotDK)
 library(dplyr)
 library(ggplot2)
-df |> 
+p <- df |> 
   group_by(BOPOMR) |> 
   mutate(totbefolk = sum(INDHOLD)) |> 
   mutate(andel = INDHOLD/totbefolk) |> 
   filter(HFUDD == "H10 Grundskole") |> 
 plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
   scale_fill_gradient(low = "blue",
-                      high = "red")
+                      high = "red") 
+                      ggplotly(p, tooltip = c("fill"))
+
+```
+
+```{r}
+p <- df |> 
+  group_by(BOPOMR) |> 
+  mutate(totbefolk = sum(INDHOLD)) |> 
+  mutate(andel = INDHOLD/totbefolk) |> 
+  filter(HFUDD == "H10 Grundskole") |> 
+plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
+  scale_fill_gradient(low = "blue",
+                      high = "red") 
+                      ggplotly(p, tooltip = c("andel"))
 
 ```
 
