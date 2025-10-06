@@ -12,6 +12,7 @@ format:
         - readr
         - ggplot2
         - dplyr
+        - plotly
         - plotDK
     revealjs-plugins:
       - drop
@@ -59,6 +60,16 @@ Det er _relativt_ let at gå fra nybegynder til at få lavet en visualisering.
 Let som i: En kategori 2 stigning i Tour de France er let sammenlignet med en
 kategori 1 stigning...
 
+## Hvad gør det let?
+
+Det er open-source.
+
+Så rare mennesker skriver funktioner der gør ting.
+
+Og deler dem i såkaldte "pakker"
+
+Det kommer vi til at bruge!
+
 ## Jamen jeg har ikke R installeret på min computer!
 
 No worries. De her slides kommer med R indbygget.
@@ -76,10 +87,10 @@ Og så vil vi gøre ting med det
 
 
 ## Målet
-Sådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne.
-```{r echo = FALSE} 
+```{r demo, echo = FALSE} 
 library(plotDK)
 library(dplyr)
+library(plotly)
 library(ggplot2)
 library(readr)
 library(httr2)
@@ -147,11 +158,12 @@ Og det er måske også lidt avanceret for absolutte nybegyndere...
 
 De har en såkaldt "konsol", som man kan bruge til at konstruere og teste den slags.
 
-Den besøger vi!
+## Den besøger vi!
+
+ [Konsollen er her](https://api.statbank.dk/console#data){target="_blank"}
 
 Det her kalder API'et og giver os vores ønskede data:
 
-https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024
 
 ```
 data_url <- "https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024"
@@ -180,7 +192,6 @@ Husk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt ud
 Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveua, at en
 15-årig ikke har en lang videregående uddannelse endnu.
 
-Hvordan gør vi dt?
 
 ## Inspicer data
 
@@ -194,30 +205,75 @@ Så vi har et antal borgere med forskelligt niveau af uddannelse. Men ikke en an
 ## Grupper og opsummer data
 
 Vi starter med at finde ud af hvor mange der bor i hvert bopælsområde:
-```{r}
+``` 
 library(tidyverse)
-data <- data |> group_by(BOPOMR) |> 
+data <- data |> 
+  group_by(BOPOMR) |> 
   mutate(totbefolk = sum(INDHOLD)) |> 
   ungroup()
-
 ```
 
 ## Beregn andel
 
-```{r}
+```
 data <- data |> 
   mutate(andel = INDHOLD/totbefolk)
+```
+
+## Udvælg det vi var interesserede i
+
+Vi var særligt interesserede i hvor stor en andel af befolkningen,
+der har grundskolen som højste uddannelse.
+
+```
+data |> 
+filter(HFUDD == "H10 Grundskole")
 ```
 
 ## Lidt om plotDK - choropleth
 
 Vi vil gerne have lavet et kort. Og vi vil gerne farvelægge 
-kommunerne på kortet efter hvor mange 
+kommunerne på kortet.
 
-kortet!
+Rare mennesker har lavet en pakke der kan hjælpe med det. Den er ret hjælpsom
 
+`plotDK`
 
+```{r}
+library(plotDK)
+plotDK::plotDK()
+```
 
+## Andele på kort
+
+```
+data |> 
+filter(HFUDD == "H10 Grundskole") |> 
+plotDK(id = "BOPOMR", value = "andel")
+```
+
+## Interaktivt!
+
+```
+data |> 
+filter(HFUDD == "H10 Grundskole") |> 
+plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
+```
+
+## Trælse farver...
+
+`plotDK` er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver,
+gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter
+
+´´´
+library(plotly)
+p <- data |> 
+ filter(HFUDD == "H10 Grundskole") |> 
+  plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
+  scale_fill_gradient(low = "blue",
+                      high = "red") 
+ggplotly(p, tooltip = c("fill"))
+´´´
 
 ## Hvordan gør jeg det derhjemme?
 
@@ -226,13 +282,7 @@ Gør dig selv en tjeneste - download og installer [R](https://cran.r-project.org
 Der er begrænsninger i denne side som bliver trælse på sigt.
 
 
-
 ## Det samlede script - det vi lavede
-
-Her sætter vi det samlede færdige script ind, lige til at kopiere.
-plotDK er pakken!
-
-Det er så ikke det vi kommer til at gøre.
 
 ```
 library(httr2)
@@ -244,8 +294,6 @@ variables <- list(list(code = "BOPOMR", values = I("*")),
               )
 
 our_body <- list(table = "HFUDD11", lang = "da", format = "CSV", variables = variables)
-
-
 
 resp <- request(endpoint) |>
   req_body_json(our_body) |>
@@ -270,22 +318,11 @@ p <- df |>
 plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
   scale_fill_gradient(low = "blue",
                       high = "red") 
-                      ggplotly(p, tooltip = c("fill"))
+ggplotly(p, tooltip = c("fill"))
 
 ```
 
-```{r}
-p <- df |> 
-  group_by(BOPOMR) |> 
-  mutate(totbefolk = sum(INDHOLD)) |> 
-  mutate(andel = INDHOLD/totbefolk) |> 
-  filter(HFUDD == "H10 Grundskole") |> 
-plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
-  scale_fill_gradient(low = "blue",
-                      high = "red") 
-                      ggplotly(p, tooltip = c("andel"))
 
-```
 
 
 ## Det samlede script - det vi gerne ville have lavet
