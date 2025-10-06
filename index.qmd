@@ -23,7 +23,10 @@ format:
 
 ## Housekeeping
 
-Gå til denne side i din browser: https://kubdatalab.github.io/DM-arrangemen
+
+
+
+Gå til denne side i din browser: https://kubdatalab.github.io/DM-arrangement
 
 Følg med ved at bruge piletasterne.
 
@@ -145,18 +148,31 @@ Den besøger vi!
 
 Det her kalder API'et og giver os vores ønskede data:
 
-https://api.statbank.dk/v1/data/HFIDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH88&Tid=2024
+https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024
+
+```
+data_url <- "https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024"
+```
 
 ## Hent data
 
+Vi så hvordan vi kunne gemme oplysninger i "objekter" i R.
+
+Vi kan også gemme mere komplekse data i R.
+
+```
+library(readr)
+data <- read_csv2(data_url)
+```
 
 
+## Manipuler data
+
+Og så skal vi have taget stilling til hvad vi faktisk vil have på det kort!
+
+## Lidt om plotDK - choropleth
 
 
-
-Manipuler data
-
-Lidt om plotDK - choropleth
 
 kortet!
 
