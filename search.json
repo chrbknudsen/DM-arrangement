@@ -21,6 +21,13 @@
     "text": "Hvad er R?\nR er et generelt, scriptet, programmeringssprog der er særligt udviklet til statistisk dataanalyse.\nDet er relativt let at gå fra nybegynder til at få lavet en visualisering.\nLet som i: En kategori 2 stigning i Tour de France er let sammenlignet med en kategori 1 stigning…"
   },
   {
+    "objectID": "index.html#hvad-gør-det-let",
+    "href": "index.html#hvad-gør-det-let",
+    "title": "Find guldet",
+    "section": "Hvad gør det let?",
+    "text": "Hvad gør det let?\nDet er open-source.\nSå rare mennesker skriver funktioner der gør ting.\nOg deler dem i såkaldte “pakker”\nDet kommer vi til at bruge!"
+  },
+  {
     "objectID": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
     "href": "index.html#jamen-jeg-har-ikke-r-installeret-på-min-computer",
     "title": "Find guldet",
@@ -39,7 +46,7 @@
     "href": "index.html#målet",
     "title": "Find guldet",
     "section": "Målet",
-    "text": "Målet\nSådan da. Vi skal nok have den gennem ggplotly så vi faktisk kan styre farverne."
+    "text": "Målet"
   },
   {
     "objectID": "index.html#trin-for-trin",
@@ -53,7 +60,14 @@
     "href": "index.html#en-smutvej",
     "title": "Find guldet",
     "section": "En smutvej",
-    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags.\nDen besøger vi!\nDet her kalder API’et og giver os vores ønskede data:\nhttps://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\ndata_url &lt;- \"https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\""
+    "text": "En smutvej\nEgentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.\nMen det kan vores hjemmeside ikke.\nOg det er måske også lidt avanceret for absolutte nybegyndere…\nDe har en såkaldt “konsol”, som man kan bruge til at konstruere og teste den slags."
+  },
+  {
+    "objectID": "index.html#den-besøger-vi",
+    "href": "index.html#den-besøger-vi",
+    "title": "Find guldet",
+    "section": "Den besøger vi!",
+    "text": "Den besøger vi!\nKonsollen er her\nDet her kalder API’et og giver os vores ønskede data:\ndata_url &lt;- \"https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024\""
   },
   {
     "objectID": "index.html#hent-data",
@@ -67,14 +81,63 @@
     "href": "index.html#manipuler-data",
     "title": "Find guldet",
     "section": "Manipuler data",
-    "text": "Manipuler data\nOg så skal vi have taget stilling til hvad vi faktisk vil have på det kort!"
+    "text": "Manipuler data\nOg så skal vi have taget stilling til hvad vi faktisk vil have på det kort!\nVi kunne godt tænke os at se hvor stor en andel af befolkningen i hver kommune, der har grundskolen som den højest gennemførte uddannelse.\nHusk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt uddannelsesniveau. Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveua, at en 15-årig ikke har en lang videregående uddannelse endnu."
+  },
+  {
+    "objectID": "index.html#inspicer-data",
+    "href": "index.html#inspicer-data",
+    "title": "Find guldet",
+    "section": "Inspicer data",
+    "text": "Inspicer data\nhead(data)\ndata |&gt; summary()\nSå vi har et antal borgere med forskelligt niveau af uddannelse. Men ikke en andel. Hvordan får vi det?"
+  },
+  {
+    "objectID": "index.html#grupper-og-opsummer-data",
+    "href": "index.html#grupper-og-opsummer-data",
+    "title": "Find guldet",
+    "section": "Grupper og opsummer data",
+    "text": "Grupper og opsummer data\nVi starter med at finde ud af hvor mange der bor i hvert bopælsområde:\nlibrary(tidyverse)\ndata &lt;- data |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  ungroup()"
+  },
+  {
+    "objectID": "index.html#beregn-andel",
+    "href": "index.html#beregn-andel",
+    "title": "Find guldet",
+    "section": "Beregn andel",
+    "text": "Beregn andel\ndata &lt;- data |&gt; \n  mutate(andel = INDHOLD/totbefolk)"
+  },
+  {
+    "objectID": "index.html#udvælg-det-vi-var-interesserede-i",
+    "href": "index.html#udvælg-det-vi-var-interesserede-i",
+    "title": "Find guldet",
+    "section": "Udvælg det vi var interesserede i",
+    "text": "Udvælg det vi var interesserede i\nVi var særligt interesserede i hvor stor en andel af befolkningen, der har grundskolen som højste uddannelse.\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\")"
   },
   {
     "objectID": "index.html#lidt-om-plotdk---choropleth",
     "href": "index.html#lidt-om-plotdk---choropleth",
     "title": "Find guldet",
     "section": "Lidt om plotDK - choropleth",
-    "text": "Lidt om plotDK - choropleth\nkortet!"
+    "text": "Lidt om plotDK - choropleth\nVi vil gerne have lavet et kort. Og vi vil gerne farvelægge kommunerne på kortet.\nRare mennesker har lavet en pakke der kan hjælpe med det. Den er ret hjælpsom\nplotDK"
+  },
+  {
+    "objectID": "index.html#andele-på-kort",
+    "href": "index.html#andele-på-kort",
+    "title": "Find guldet",
+    "section": "Andele på kort",
+    "text": "Andele på kort\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK(id = \"BOPOMR\", value = \"andel\")"
+  },
+  {
+    "objectID": "index.html#interaktivt",
+    "href": "index.html#interaktivt",
+    "title": "Find guldet",
+    "section": "Interaktivt!",
+    "text": "Interaktivt!\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = TRUE)"
+  },
+  {
+    "objectID": "index.html#trælse-farver",
+    "href": "index.html#trælse-farver",
+    "title": "Find guldet",
+    "section": "Trælse farver…",
+    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom.\n´´´ p &lt;- data |&gt; filter(HFUDD == “H10 Grundskole”) |&gt; plotDK::plotDK(id = “BOPOMR”, value = “andel”, interactive = FALSE) + scale_fill_gradient(low = “blue”, high = “red”) ggplotly(p, tooltip = c(“fill”)) ´´´"
   },
   {
     "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
@@ -88,7 +151,7 @@
     "href": "index.html#det-samlede-script---det-vi-lavede",
     "title": "Find guldet",
     "section": "Det samlede script - det vi lavede",
-    "text": "Det samlede script - det vi lavede\nHer sætter vi det samlede færdige script ind, lige til at kopiere. plotDK er pakken!\nDet er så ikke det vi kommer til at gøre.\nlibrary(httr2)\nendpoint &lt;- \"http://api.statbank.dk/v1/data\"\n\nvariables &lt;- list(list(code = \"BOPOMR\", values = I(\"*\")),\n                  list(code = \"HFUDD\", values = c(\"H10\", \"H20\", \"H30\", \"H40\", \"H50\", \"H60\", \"H70\", \"H80\", \"H90\")),\n                  list(code = \"Tid\", values = I(2024))\n              )\n\nour_body &lt;- list(table = \"HFUDD11\", lang = \"da\", format = \"CSV\", variables = variables)\n\n\n\nresp &lt;- request(endpoint) |&gt;\n  req_body_json(our_body) |&gt;\n  req_perform()\n\ncsv_text &lt;- resp_body_string(resp)\n\n\ndf &lt;- read.csv2(text = csv_text)\ndf &lt;- df |&gt;mutate(BOPOMR = tolower(BOPOMR))\n\nplotDK::municipality |&gt; head()\n\nlibrary(plotDK)\nlibrary(dplyr)\nlibrary(ggplot2)\ndf |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  mutate(andel = INDHOLD/totbefolk) |&gt; \n  filter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\")"
+    "text": "Det samlede script - det vi lavede\nlibrary(httr2)\nendpoint &lt;- \"http://api.statbank.dk/v1/data\"\n\nvariables &lt;- list(list(code = \"BOPOMR\", values = I(\"*\")),\n                  list(code = \"HFUDD\", values = c(\"H10\", \"H20\", \"H30\", \"H40\", \"H50\", \"H60\", \"H70\", \"H80\", \"H90\")),\n                  list(code = \"Tid\", values = I(2024))\n              )\n\nour_body &lt;- list(table = \"HFUDD11\", lang = \"da\", format = \"CSV\", variables = variables)\n\nresp &lt;- request(endpoint) |&gt;\n  req_body_json(our_body) |&gt;\n  req_perform()\n\ncsv_text &lt;- resp_body_string(resp)\n\n\ndf &lt;- read.csv2(text = csv_text)\ndf &lt;- df |&gt;mutate(BOPOMR = tolower(BOPOMR))\n\nplotDK::municipality |&gt; head()\n\nlibrary(plotDK)\nlibrary(dplyr)\nlibrary(ggplot2)\np &lt;- df |&gt; \n  group_by(BOPOMR) |&gt; \n  mutate(totbefolk = sum(INDHOLD)) |&gt; \n  mutate(andel = INDHOLD/totbefolk) |&gt; \n  filter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK::plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\") \nggplotly(p, tooltip = c(\"fill\"))"
   },
   {
     "objectID": "index.html#det-samlede-script---det-vi-gerne-ville-have-lavet",
