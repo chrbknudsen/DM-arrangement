@@ -257,17 +257,19 @@ plotDK(id = "BOPOMR", value = "andel")
 ```
 data |> 
 filter(HFUDD == "H10 Grundskole") |> 
-plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
+plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
 ```
 
 ## Trælse farver...
 
-`plotDK` er hjælpsom. Lidt for hjælpsom.
+`plotDK` er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver,
+gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter
 
 ´´´
+library(plotly)
 p <- data |> 
  filter(HFUDD == "H10 Grundskole") |> 
-  plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
+  plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
   scale_fill_gradient(low = "blue",
                       high = "red") 
 ggplotly(p, tooltip = c("fill"))
