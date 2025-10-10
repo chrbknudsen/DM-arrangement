@@ -137,7 +137,7 @@
     "href": "index.html#trælse-farver",
     "title": "Find guldet",
     "section": "Trælse farver…",
-    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver, gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter\n´´´ library(plotly) p &lt;- data |&gt; filter(HFUDD == “H10 Grundskole”) |&gt; plotDK(id = “BOPOMR”, value = “andel”, interactive = FALSE) + scale_fill_gradient(low = “blue”, high = “red”) ggplotly(p, tooltip = c(“fill”)) ´´´"
+    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver, gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter\nlibrary(plotly)\np &lt;- data |&gt; \n filter(HFUDD == \"H10 Grundskole\") |&gt; \n  plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\") \nggplotly(p, tooltip = c(\"fill\"))"
   },
   {
     "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
@@ -164,7 +164,7 @@
     "objectID": "index.html#lidt-ekstra",
     "href": "index.html#lidt-ekstra",
     "title": "Find guldet",
-    "section": "lidt ekstra",
-    "text": "lidt ekstra\nSøjlediagrammer\ndata |&gt; \n  filter(BOPOMR %in% c(\"københavn\", \"tårnby\")) |&gt; \n  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +\n  geom_col(position = \"dodge\")"
+    "section": "Lidt ekstra",
+    "text": "Lidt ekstra\nSøjlediagrammer\ndata |&gt; \n  filter(BOPOMR %in% c(\"københavn\", \"tårnby\")) |&gt; \n  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +\n  geom_col(position = \"dodge\")"
   }
 ]
