@@ -327,7 +327,7 @@ ggplotly(p, tooltip = c("fill"))
 
 ## Det samlede script - det vi gerne ville have lavet
 
-## lidt ekstra
+## Lidt ekstra
 
 Søjlediagrammer
 ```
