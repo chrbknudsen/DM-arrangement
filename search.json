@@ -46,7 +46,7 @@
     "href": "index.html#målet",
     "title": "Find guldet",
     "section": "Målet",
-    "text": "Målet"
+    "text": "Målet\n\n\n       BOPOMR                                         HFUDD  TID INDHOLD\n1 hele landet                                H10 Grundskole 2024  938039\n2 hele landet                    H20 Gymnasiale uddannelser 2024  463884\n3 hele landet               H30 Erhvervsfaglige uddannelser 2024 1120906\n4 hele landet       H40 Korte videregående uddannelser, KVU 2024  222851\n5 hele landet H50 Mellemlange videregående uddannelser, MVU 2024  649128\n6 hele landet                 H60 Bacheloruddannelser, BACH 2024  142432"
   },
   {
     "objectID": "index.html#trin-for-trin",
@@ -119,6 +119,13 @@
     "text": "Lidt om plotDK - choropleth\nVi vil gerne have lavet et kort. Og vi vil gerne farvelægge kommunerne på kortet.\nRare mennesker har lavet en pakke der kan hjælpe med det. Den er ret hjælpsom\nplotDK"
   },
   {
+    "objectID": "index.html#hvordan-bruger-man-det",
+    "href": "index.html#hvordan-bruger-man-det",
+    "title": "Find guldet",
+    "section": "Hvordan bruger man det?",
+    "text": "Hvordan bruger man det?\nIndbygget hjælpefunktion\n?plotDK\nSom ser en del bedre ud i RStudio eller Positron.\nLæg mærke til at plotDK antager at alle kommunenavne er med småt!"
+  },
+  {
     "objectID": "index.html#andele-på-kort",
     "href": "index.html#andele-på-kort",
     "title": "Find guldet",
@@ -130,14 +137,14 @@
     "href": "index.html#interaktivt",
     "title": "Find guldet",
     "section": "Interaktivt!",
-    "text": "Interaktivt!\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK(id = \"BOPOMR\", value = \"andel\", interactive = TRUE)"
+    "text": "Interaktivt!\nMen det virker ikke når vi er på en så primitiv platform som denne.\ndata |&gt; \nfilter(HFUDD == \"H10 Grundskole\") |&gt; \nplotDK(id = \"BOPOMR\", value = \"andel\", interactive = TRUE)"
   },
   {
     "objectID": "index.html#trælse-farver",
     "href": "index.html#trælse-farver",
     "title": "Find guldet",
     "section": "Trælse farver…",
-    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver, gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter\nlibrary(plotly)\np &lt;- data |&gt; \n filter(HFUDD == \"H10 Grundskole\") |&gt; \n  plotDK(id = \"BOPOMR\", value = \"andel\", interactive = FALSE)  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\") \nggplotly(p, tooltip = c(\"fill\"))"
+    "text": "Trælse farver…\nplotDK er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver, gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter\nlibrary(plotly)\ndata |&gt; \n filter(HFUDD == \"H10 Grundskole\") |&gt; \n  plotDK(id = \"BOPOMR\", value = \"andel\")  +\n  scale_fill_gradient(low = \"blue\",\n                      high = \"red\")"
   },
   {
     "objectID": "index.html#hvordan-gør-jeg-det-derhjemme",
@@ -165,6 +172,6 @@
     "href": "index.html#lidt-ekstra",
     "title": "Find guldet",
     "section": "Lidt ekstra",
-    "text": "Lidt ekstra\nSøjlediagrammer\ndata |&gt; \n  filter(BOPOMR %in% c(\"københavn\", \"tårnby\")) |&gt; \n  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +\n  geom_col(position = \"dodge\")"
+    "text": "Lidt ekstra\nå Søjlediagrammer\ndata |&gt; \n  filter(BOPOMR %in% c(\"københavn\", \"tårnby\")) |&gt; \n  ggplot(aes(x = BOPOMR, y = andel, fill = HFUDD)) +\n  geom_col(position = \"dodge\")"
   }
 ]
