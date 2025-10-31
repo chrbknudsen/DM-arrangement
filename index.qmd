@@ -6,9 +6,8 @@ format:
     logo: "kubdatalab.png"
     drop:
       button: true
-      shortcut: "å"
-    webr:
-      packages:
+      shortcut: "½"
+    ½  packages:
         - readr
         - ggplot2
         - dplyr
@@ -17,9 +16,6 @@ format:
     revealjs-plugins:
       - drop
 ---
-
-#
-![](figs/trompetpiger_top.jpg) 
 
 
 ## Housekeeping
@@ -115,7 +111,7 @@ csv_text <- resp_body_string(resp)
 df <- read.csv2(text = csv_text)
 df <- df |>mutate(BOPOMR = tolower(BOPOMR))
 
-
+df |> head()
 
 p <- df |> 
   group_by(BOPOMR) |> 
@@ -132,31 +128,25 @@ plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
 
 ## Trin for trin
 
-Definer hvilke data vi skal have. 
-
-Vi har snydt lidt og forberedt os.
-
-Befolkningens højst fuldførte uddannelse (15-69 år) efter bopælsområde, herkomst, 
+:::{.incremental}
+- Definer hvilke data vi skal have. 
+- Vi har snydt lidt og forberedt os.
+- Befolkningens højst fuldførte uddannelse (15-69 år) efter bopælsområde, herkomst, 
 højest fuldføte uddannelse, alder og køn.
-
-Blandt venner HFUDD11
-
-[Datavejviser](https://www.datavejviser.dk/){target="_blank"}
-
-Hov! Man skal logge på!
-
-Dann haben wir anderen Methoden...
+- Blandt venner HFUDD11
+- [Datavejviser](https://www.datavejviser.dk/){target="_blank"}
+- Hov! Man skal logge på!
+- Dann haben wir anderen Methoden...
+:::
 
 ## En smutvej
 
-Egentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API,
-med komplekse datastrukturer og avancerede udvælgelseskriterier.
-
-Men det kan vores hjemmeside ikke. 
-
-Og det er måske også lidt avanceret for absolutte nybegyndere...
-
-De har en såkaldt "konsol", som man kan bruge til at konstruere og teste den slags.
+:::{.incremental}
+- Egentlig ville vi gerne vise et avanceret POST kald op mod Danmarks Statistiks API, med komplekse datastrukturer og avancerede udvælgelseskriterier.
+- Men det kan vores hjemmeside ikke. 
+- Og det er måske også lidt avanceret for absolutte nybegyndere...
+- De har en såkaldt "konsol", som man kan bruge til at konstruere og teste den slags.
+:::
 
 ## Den besøger vi!
 
@@ -182,16 +172,13 @@ data <- read_csv2(data_url)
 
 
 ## Manipuler data
+:::{.incremental}
+- Og så skal vi have taget stilling til hvad vi faktisk vil have på det kort!
 
-Og så skal vi have taget stilling til hvad vi faktisk vil have på det kort!
+- Vi kunne godt tænke os at se hvor stor en andel af befolkningen i hver kommune, der har  grundskolen som den højest gennemførte uddannelse.
 
-Vi kunne godt tænke os at se hvor stor en andel af befolkningen i hver kommune, der har 
-grundskolen som den højest gennemførte uddannelse.
-
-Husk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt uddannelsesniveau. 
-Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveua, at en
-15-årig ikke har en lang videregående uddannelse endnu.
-
+- Husk - vi har borgere ned til 15 år, så vi ser både tal der afspejler lavt uddannelsesniveau.  Men også hvor ung befolkningen er. Det er ikke et udtryk for lavt uddannelsesniveau, at en 15-årig ikke har en lang videregående uddannelse endnu.
+:::
 
 ## Inspicer data
 
@@ -244,6 +231,17 @@ library(plotDK)
 plotDK::plotDK()
 ```
 
+## Hvordan bruger man det?
+
+Indbygget hjælpefunktion
+
+`?plotDK`
+
+Som ser en del bedre ud i RStudio eller Positron.
+
+Læg mærke til at plotDK antager at alle kommunenavne er med småt!
+
+
 ## Andele på kort
 
 ```
@@ -252,27 +250,17 @@ filter(HFUDD == "H10 Grundskole") |>
 plotDK(id = "BOPOMR", value = "andel")
 ```
 
-## Interaktivt!
-
-```
-data |> 
-filter(HFUDD == "H10 Grundskole") |> 
-plotDK(id = "BOPOMR", value = "andel", interactive = TRUE)
-```
 
 ## Trælse farver...
 
-`plotDK` er hjælpsom. Lidt for hjælpsom. Hvis vi vil justere på farver,
-gør vi det lettest ved at plotte non-interaktivt. Og så gøre det interaktivt bagefter
+Dem kan vi da ændre!
 
 ```
-library(plotly)
-p <- data |> 
+data |> 
  filter(HFUDD == "H10 Grundskole") |> 
-  plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
+  plotDK(id = "BOPOMR", value = "andel")  +
   scale_fill_gradient(low = "blue",
                       high = "red") 
-ggplotly(p, tooltip = c("fill"))
 ```
 
 ## Hvordan gør jeg det derhjemme?
@@ -284,8 +272,15 @@ Der er begrænsninger i denne side som bliver trælse på sigt.
 
 ## Det samlede script - det vi lavede
 
+
+
+
+
+## Det samlede script - det vi gerne ville have lavet
 ```
 library(httr2)
+library(tidyverse)
+library(plotDK)
 endpoint <- "http://api.statbank.dk/v1/data"
 
 variables <- list(list(code = "BOPOMR", values = I("*")),
@@ -305,27 +300,16 @@ csv_text <- resp_body_string(resp)
 df <- read.csv2(text = csv_text)
 df <- df |>mutate(BOPOMR = tolower(BOPOMR))
 
-plotDK::municipality |> head()
-
-library(plotDK)
-library(dplyr)
-library(ggplot2)
-p <- df |> 
+df |> 
   group_by(BOPOMR) |> 
   mutate(totbefolk = sum(INDHOLD)) |> 
   mutate(andel = INDHOLD/totbefolk) |> 
   filter(HFUDD == "H10 Grundskole") |> 
-plotDK::plotDK(id = "BOPOMR", value = "andel", interactive = FALSE)  +
-  scale_fill_gradient(low = "blue",
-                      high = "red") 
-ggplotly(p, tooltip = c("fill"))
+  plotDK(id = "BOPOMR", value = "andel", interactive = TRUE) 
+
+
 
 ```
-
-
-
-
-## Det samlede script - det vi gerne ville have lavet
 
 ## Lidt ekstra
 
