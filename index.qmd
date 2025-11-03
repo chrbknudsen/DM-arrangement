@@ -272,8 +272,42 @@ Der er begrænsninger i denne side som bliver trælse på sigt.
 
 ## Det samlede script - det vi lavede
 
+´´´
+data_url <- "https://api.statbank.dk/v1/data/HFUDD11/CSV?BOPOMR=*&HFUDD=H10%2CH20%2CH30%2CH40%2CH50%2CH60%2CH70%2CH80%2CH90&Tid=2024"
+library(readr)
+data <- read_csv2(data_url)
+
+head(data)
+data |> summary()
+
+library(dplyr)
+data <- data |> 
+  group_by(BOPOMR) |> 
+  mutate(totbefolk = sum(INDHOLD)) |> 
+  ungroup()
+
+data <- data |> 
+  mutate(andel = INDHOLD/totbefolk)
+
+data |> 
+filter(HFUDD == "H10 Grundskole")
+
+library(plotDK)
 
 
+data <- data |>mutate(BOPOMR = tolower(BOPOMR))
+
+data |> 
+filter(HFUDD == "H10 Grundskole") |> 
+plotDK(id = "BOPOMR", value = "andel")
+
+data |> 
+ filter(HFUDD == "H10 Grundskole") |> 
+  plotDK(id = "BOPOMR", value = "andel")  +
+  scale_fill_gradient(low = "blue",
+                      high = "red") 
+
+´´´
 
 
 ## Det samlede script - det vi gerne ville have lavet
